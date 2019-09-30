@@ -1,0 +1,52 @@
+<app-main-menu></app-main-menu>
+<br>
+<br>
+
+<main class="container" *ngIf="nodeDetails !== null">
+  <table class="table table-bordered table-hover display-content">
+    <thead>
+    <tr>
+      <th>Node Name</th>
+      <th colspan="3">Last Upgraded Time</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let node of nodeDetails">
+    <td>
+      <mat-list>
+    <nav>
+      <a routerLink="/nodedetails/{{node.id}}">
+    <mat-list-item (click)="setSelected(node)">
+
+    <p appUpgradeStatus *ngIf="node.upgradeStatus=='RUNNING'; else failed">
+      <u>Node {{node.hostName}}</u>
+    </p>
+    <ng-template #failed >
+      <p *ngIf="node.upgradeStatus=='FAILED'; else completed"
+         [ngStyle]="{'color': node.upgradeStatus=='FAILED' ? 'red' : completed}">
+        <u>Node {{node.hostName}}</u></ng-template>
+
+      <ng-template #completed >
+        <p [ngStyle]="{'color': node.upgradeStatus=='COMPLETED' ? 'green' : 'grey'}">
+          <u>Node {{node.hostName}}</u>
+      </ng-template>
+    </mat-list-item>
+
+      </a>
+    </nav>
+  </mat-list>
+    </td>
+    <td>{{node.upgradeEndTime}}</td>
+      <td><button class="btn btn-danger" (click)="onDeleteNode(node.id)">Delete</button> </td>
+      <td><button class="btn btn-warning" (click)="onEditNode(node)">Edit</button> </td>
+    </tr>
+    </tbody>
+  </table>
+</main>
+
+<br>
+<br>
+<br>
+<div class="container" *ngIf="nodeDetails == null">
+  <h2>Please select the platform under "Platforms" tab to continue</h2>
+</div>

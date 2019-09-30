@@ -1,0 +1,96 @@
+<app-main-menu></app-main-menu>
+
+<div class="container" *ngIf="nodedetails">
+<!--  <div class="container" *ngIf="passedNode">-->
+  <mat-card>
+    <mat-card-title>Node details</mat-card-title>
+    <br>
+    <table class="table table-bordered table-hover">
+      <tbody>
+      <tr>
+        <th scope="row">Node name:</th>
+        <td>{{nodedetails.hostName}}</td>
+      </tr>
+      <tr>
+        <th scope="row">Host id:</th>
+        <td>{{nodedetails.hostId}}</td>
+      </tr>
+      <tr>
+        <th scope="row">Current stage:</th>
+        <td>{{nodedetails.currentStatus}}</td>
+      </tr>
+      <tr>
+        <th scope="row">Upgrade Status:</th>
+        <td>{{nodedetails.upgradeStatus}}</td>
+      </tr>
+      <tr>
+        <th scope="row">Upgrade Start Time:</th>
+        <td>{{nodedetails.upgradeStartTime}}</td>
+      </tr>
+      <tr>
+        <th scope="row">Upgrade End time:</th>
+        <td>{{nodedetails.hostName}}</td>
+      </tr>
+      <tr>
+        <th scope="row">Old kernel version:</th>
+        <td>{{nodedetails.oldKernelVersion}}</td>
+      </tr>
+      <tr>
+        <th scope="row">New Kernel version:</th>
+        <td>{{nodedetails.newKernelVersion}}</td>
+      </tr>
+      <tr>
+        <th scope="row">Skip Upgrade:</th>
+        <td>
+          <span *ngIf="nodedetails.skipUpgrade">True</span>
+          <span *ngIf="!nodedetails.skipUpgrade">False</span>
+        </td>
+      </tr>
+      </tbody>
+
+    </table>
+    <div id="bottom">
+
+      <button mat-raised-button color="primary"
+              *ngIf="nodedetails.upgradeStatus !=='RUNNING' &&
+                     nodedetails.upgradeStatus !== 'Paused'"
+              (click)="startUpgrade()">Start Upgrade</button>
+
+      <button mat-raised-button color="accent"
+              *ngIf="nodedetails.upgradeStatus === 'RUNNING'"
+              (click)="pauseUpgrade()">Pause Upgrade</button>
+
+      <button mat-raised-button color="warn"
+              *ngIf="nodedetails.upgradeStatus === 'RUNNING' ||
+                     nodedetails.upgradeStatus === 'Paused'"
+              (click)="stopUpgrade()">Stop Upgrade</button>
+
+      <button mat-raised-button color="primary"
+              *ngIf="nodedetails.upgradeStatus === 'Paused'"
+              (click)="resumeUpgrade()">Resume Upgrade</button>
+
+    </div>
+
+  </mat-card>
+  <br>
+  <br>
+
+  <div class="container-fluid">
+    <mat-card>
+      <mat-card-title>Exec details</mat-card-title>
+      <br>
+      <table class="table table-bordered table-hover">
+        <tbody>
+          <tr>
+            <th scope="row">Log file:</th>
+            <td>{{execdetails.logFile}}</td>
+          </tr>
+          <tr>
+            <th scope="row">Tailstream port:</th>
+            <td><a href="{{tailStream}}"><u>Click Here</u></a></td>
+          </tr>
+        </tbody>
+      </table>
+    </mat-card>
+  </div>
+</div>

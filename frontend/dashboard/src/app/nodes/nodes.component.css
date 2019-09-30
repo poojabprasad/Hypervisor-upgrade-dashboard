@@ -1,0 +1,39 @@
+.running {
+  color: gold;
+}
+
+.failed {
+  color: red;
+}
+
+.completed {
+  color: green;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  margin: 5px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.addBtn {
+
+  align-self: flex-end;
+  /*margin-top: -54px;*/
+  margin-top: auto;
+}
+
+.upgradeAll {
+
+  align-self: flex-start;
+  /*margin-top: auto;*/
+}
+
+.display-content > tbody > tr > td {
+  vertical-align: middle;
+}

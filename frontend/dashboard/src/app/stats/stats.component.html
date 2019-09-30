@@ -1,0 +1,128 @@
+<app-main-menu></app-main-menu>
+<div class="container" *ngIf="validUrl === null">
+  <br>
+  <br>
+  <br>
+  <h2>Please select the platform from "Platforms" tab to continue</h2>
+</div>
+<div class="container-fluid" *ngIf="validUrl">
+  <mat-card>
+    <mat-card-title>Counters</mat-card-title>
+    <br>
+    <table class="table table-bordered table-hover">
+      <thead>
+      <tr>
+        <th scope="col">Total Nodes</th>
+        <th scope="col">Upgraded Nodes</th>
+        <th scope="col">Failed Nodes</th>
+        <th scope="col">Pending Node</th>
+        <th scope="col">In Progress</th>
+      </tr>
+      </thead>
+      <tbody>
+
+      <tr>
+        <td>{{counters.totalHypervisors}}</td>
+        <td>{{counters.upgradedHypervisors}}</td>
+        <td>{{counters.failedHypervisors}}</td>
+        <td>{{counters.pendingHypervisors}}</td>
+        <td>{{counters.inProgress}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </mat-card>
+</div>
+
+<br>
+<div class="container-fluid" *ngIf="validUrl">
+  <mat-card>
+    <mat-card-title>Currently Upgrading nodes</mat-card-title>
+    <br>
+    <table class="table table-bordered table-hover">
+      <thead>
+      <tr>
+        <th scope="col">Current state</th>
+        <th scope="col">Currently Upgrading node</th>
+        <th scope="col">Previously Upgraded node</th>
+      </tr>
+      </thead>
+      <tbody>
+
+      <ng-container *ngFor="let status of upgradeStatus">
+        <tr *ngIf="status.state == 'RUNNING'">
+        <td>{{status.state}}</td>
+        <td>{{status.currentlyUpgrading}}</td>
+        <td>{{status.previouslyUpgraded}}</td>
+        </tr>
+      </ng-container>
+      </tbody>
+    </table>
+  </mat-card>
+</div>
+
+<br>
+
+<div class="container-fluid" *ngIf="validUrl !== null">
+  <mat-card>
+    <mat-card-title>Node details</mat-card-title>
+    <br>
+
+    <table class="table table-bordered table-hover">
+      <thead>
+        <tr>
+          <th scope="col">Node Name</th>
+          <th scope="col">Current status</th>
+          <th scope="col">Upgrade status</th>
+          <th scope="col">Old Kernel Version</th>
+          <th scope="col">New kernel version</th>
+          <th scope="col">Upgrade Start time</th>
+          <th scope="row">Upgrade End time</th>
+        </tr>
+      </thead>
+      <tbody>
+
+      <tr *ngFor="let node of nodes">
+
+        <td>
+          <a routerLink="/nodedetails/{{node.id}}">
+            {{node.hostName}}
+          </a>
+        </td>
+        <td>{{node.currentStatus}}</td>
+        <td>{{node.upgradeStatus}}</td>
+        <td>{{node.oldKernelVersion}}</td>
+        <td>{{node.newKernelVersion}}</td>
+        <td>{{node.upgradeStartTime}}</td>
+        <td>{{node.upgradeEndTime}}</td>
+      </tr>
+
+      </tbody>
+    </table>
+  </mat-card>
+</div>
+
+<br>
+
+<div class="container-fluid" *ngIf="validUrl">
+  <mat-card>
+    <mat-card-title>Execution details for nodes</mat-card-title>
+    <br>
+    <table class="table table-bordered table-hover">
+      <thead>
+      <tr>
+        <th scope="col">Log file</th>
+        <th scope="col">Tailstream port</th>
+      </tr>
+      </thead>
+      <tbody>
+
+      <tr *ngFor="let exec of execDetails">
+        <td>{{exec.logFile}}</td>
+        <td><a href="{{tailStream}}"><u>Click Here</u></a></td>
+      </tr>
+      </tbody>
+    </table>
+  </mat-card>
+</div>
+
+<br>

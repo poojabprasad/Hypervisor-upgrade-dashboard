@@ -1,0 +1,50 @@
+<app-main-menu></app-main-menu>
+
+<div class="container" *ngIf="validMessage === null; else displayForm">
+  <br>
+  <br>
+  <br>
+  <h2>Please select the platform from "Platforms" tab to continue</h2>
+</div>
+
+<ng-template #displayForm class="col-md-6 user-container">
+  <h2 class="text-center">Upgrade Node</h2>
+  <form [formGroup]="upgradeForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="sourceNode">Enter Source Node Name:</label>
+      <input type="text" formControlName="sourceNode" placeholder="Source Node name" name="sourceNode" class="form-control" id="sourceNode">
+    </div>
+
+    <div class="form-group">
+      <label for="destinationNode">Enter Destination Host name</label>
+      <input type="text" formControlName="destinationNode" placeholder="Destination Node name" name="destinationNode" class="form-control" id="destinationNode">
+    </div>
+
+    <button class="btn btn-success">Submit</button>
+  </form>
+
+
+</ng-template>
+
+<div class="container" *ngIf="validMessage !== null && execDetails !== null">
+  <mat-card>
+    <mat-card-title>Exec details</mat-card-title>
+    <br>
+    <table class="table table-bordered table-hover">
+      <tbody>
+      <tr>
+        <th scope="row">Log file:</th>
+        <td>{{execDetails.logFile}}</td>
+      </tr>
+      <tr>
+        <th scope="row">Tailstream port:</th>
+        <td><a href="{{tailStream}}">Click</a></td>
+      </tr>
+      </tbody>
+    </table>
+    {{validMessage}}
+  </mat-card>
+</div>
+
+
+

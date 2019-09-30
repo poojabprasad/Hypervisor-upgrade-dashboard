@@ -1,0 +1,13 @@
+<app-main-menu></app-main-menu>
+<div class="container" *ngIf="validUrl === null">
+  <br>
+  <br>
+  <br>
+  <h2>Please select the platform from "Platforms" tab to continue</h2>
+</div>
+<br>
+<br>
+<br>
+<p class="container" *ngIf="validUrl">
+  <a href="{{apiLink}}"><u>Click Here</u></a>
+</p>

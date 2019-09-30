@@ -1,0 +1,24 @@
+<div class="col-md-6 user-container">
+  <h2 class="text-center">Add Platform</h2>
+  <form [formGroup]="addPlatform" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">Location Name:</label>
+      <input type="text" formControlName="name" placeholder="Platform name" name="name" class="form-control" id="name">
+    </div>
+
+    <br>
+    <div class="form-group">
+      <label for="ip">IP address:</label>
+      <input type="text" formControlName="ip" placeholder="IP address" name="ip" class="form-control" id="ip">
+    </div>
+
+    <br>
+    <div class="form-group">
+      <label for="ip">Port number</label>
+      <input type="number" formControlName="port" placeholder="Port Number" name="port" class="form-control" id="port">
+    </div>
+
+    <button class="btn btn-success mr-1">Add</button>
+    <button class="btn btn-danger" (click)="cancel()">Cancel</button>
+  </form>
+</div>
