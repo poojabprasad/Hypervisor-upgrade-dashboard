@@ -1,0 +1,21 @@
+<app-main-menu></app-main-menu>
+<div class="col-md-6 user-container">
+  <h2 class="text-center">Edit Node</h2>
+  <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="hostName">Node Name:</label>
+      <input type="text" formControlName="hostName" placeholder="Node name" name="hostName" class="form-control" id="hostName">
+    </div>
+
+    <div class="form-group">
+      <label for="hostId">Host id</label>
+      <input type="number" formControlName="hostId" placeholder="Host Id" name="hostId" class="form-control" id="hostId">
+    </div>
+
+    <div class="form-group">
+      <input type="checkbox" formControlName="skipUpgrade" name="skipUpgrade" id="skipUpgrade" (change)="toggleVisibility($event)">
+      Select the box to skip upgrading the node
+    </div>
+    <button class="btn btn-success">Update</button>
+  </form>
+</div>

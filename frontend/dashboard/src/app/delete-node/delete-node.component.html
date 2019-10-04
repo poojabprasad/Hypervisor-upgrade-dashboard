@@ -1,0 +1,30 @@
+<p>
+  delete-node works!
+</p>
+
+<div class="container">
+  <mat-list *ngFor="let node of nodeDetails">
+    <nav>
+      <a routerLink="/nodedetails/{{node.id}}">
+        <h3 mat-subheader></h3>
+        <mat-list-item (click)="setSelected(node)">
+          <p appUpgradeStatus *ngIf="node.upgradeStatus=='RUNNING'; else failed">
+            <!--  <p *ngIf="node.currentStatus=='Running'; else completed">-->
+            Node {{node.hostName}}
+          </p>
+
+          <ng-template #failed >
+
+            <p *ngIf="node.upgradeStatus=='FAILED'; else completed"
+               [ngStyle]="{'color': node.upgradeStatus=='FAILED' ? 'red' : completed}">
+              Node {{node.hostName}}</ng-template>
+
+          <ng-template #completed >
+            <p [ngStyle]="{'color': node.upgradeStatus=='COMPLETED' ? 'green' : 'grey'}">
+              Node {{node.hostName}}</ng-template>
+          <mat-divider></mat-divider>
+        </mat-list-item>
+      </a>
+    </nav>
+  </mat-list>
+</div>

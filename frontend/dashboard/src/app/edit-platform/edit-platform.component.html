@@ -1,0 +1,21 @@
+<div class="col-md-6 user-container">
+  <h2 class="text-center">Edit Platform</h2>
+  <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">Platform Name:</label>
+      <input type="text" formControlName="name" placeholder="Platform name" name="name" class="form-control" id="name">
+    </div>
+
+    <div class="form-group">
+      <label for="ip">IP address:</label>
+      <input type="text" formControlName="ip" placeholder="Platform name" name="ip" class="form-control" id="ip">
+    </div>
+
+    <div class="form-group">
+      <label for="port">Host id</label>
+      <input type="number" formControlName="port" placeholder="Host Id" name="port" class="form-control" id="port">
+    </div>
+
+    <button class="btn btn-success">Update</button>
+  </form>
+</div>

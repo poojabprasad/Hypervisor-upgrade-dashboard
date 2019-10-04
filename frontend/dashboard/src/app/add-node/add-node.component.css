@@ -1,0 +1,17 @@
+.running {
+  color: gold;
+}
+
+.failed {
+  color: red;
+}
+
+.completed {
+  color: green;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  margin: 5px;
+}

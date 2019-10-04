@@ -1,0 +1,42 @@
+<main class="container">
+  <br>
+  <br>
+  <div class="addBtn">
+    <a routerLink="/addplatform">
+      <button mat-raised-button color="accent"
+              (click)="onAddPlatformClick()">
+        Add Platform</button>
+    </a>
+  </div>
+  <br>
+  <table class="table table-bordered table-hover display-content" *ngIf="platforms !== null">
+    <thead>
+    <tr>
+      <th>Platform Name</th>
+      <th>IP address</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let platform of platforms">
+      <td>
+        <mat-list>
+          <nav>
+            <a routerLink="/home">
+              <mat-list-item (click)="setSelected(platform)">
+                <p>
+                  <u>{{platform.name}}</u>
+                </p>
+
+              </mat-list-item>
+
+            </a>
+          </nav>
+        </mat-list>
+      </td>
+      <td>{{platform.ip}}</td>
+      <td><button class="btn btn-danger" (click)="onDeletePlatform(platform.id)">Delete</button> </td>
+      <td><button class="btn btn-warning" (click)="onEditPlatform(platform)">Edit</button> </td>
+    </tr>
+    </tbody>
+  </table>
+</main>

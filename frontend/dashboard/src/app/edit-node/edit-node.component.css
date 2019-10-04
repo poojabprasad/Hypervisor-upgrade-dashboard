@@ -1,0 +1,22 @@
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+input[type=checkbox] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  vertical-align: middle;
+  width: 20px;
+  height: 20px;
+  font-size: 20px;
+  background-color: #eee;
+}
+
+input[type=checkbox]:checked:after {
+  position: relative;
+  bottom: 3px;
+  left: 1px;
+  color: blue;
+  content: "\2713"; /* check mark */
+}

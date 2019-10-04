@@ -1,0 +1,25 @@
+<main class="container">
+  <div class="text-left">
+    <a routerLink="/addnode">
+      <button mat-raised-button color="primary"
+              (click)="onAddNodeClick()">
+        Add Node</button>
+    </a>
+  </div>
+
+  <div class="text-right">
+    <a routerLink="/editnode">
+      <button mat-raised-button color="accent"
+              (click)="onEditNodeClick()">
+        Edit Node</button>
+    </a>
+  </div>
+
+  <div class="addBtn">
+    <a routerLink="/deletenode">
+      <button mat-raised-button color="warn">
+<!--              (click)="onDeleteNodeClick()">-->
+        Delete Node</button>
+    </a>
+  </div>
+</main>

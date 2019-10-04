@@ -1,0 +1,79 @@
+<app-main-menu></app-main-menu>
+
+<div class="container" *ngIf="validUrl === null">
+  <br>
+  <br>
+  <br>
+  <h2>Please select the platform from "Platforms" tab to continue</h2>
+</div>
+<div class="container" *ngIf="validUrl !== null">
+  <mat-card>
+  <h3>This will upgrade all the hypervisors in the platform</h3>
+  <h3>Are you sure you want to upgrade all nodes?</h3>
+    <br/>
+    <br/>
+    <div class="form-group">
+      <input type="checkbox" name="upgradeall" id="upgradeall" (change)="toggleVisibility($event)">
+      Select the box to upgrade all the node else recently upgraded nodes will not be upgraded again
+    </div>
+
+    <br>
+    <div id="bottom">
+      <button mat-raised-button color="primary"
+              *ngIf="upgradeStatus.state ==='STOPPED'"
+              (click)="startUpgrade()">Start Upgrade</button>
+
+      <button mat-raised-button color="primary"
+              *ngIf="upgradeStatus.state ==='PAUSED'"
+              (click)="resumeUpgrade()">Resume Upgrade</button>
+
+      <button mat-raised-button color="accent"
+              *ngIf="upgradeStatus.state === 'RUNNING'"
+              (click)="pauseUpgrade()">Pause Upgrade</button>
+
+      <button mat-raised-button color="warn"
+              *ngIf="upgradeStatus.state === 'RUNNING'"
+              (click)="stopUpgrade()">Stop Upgrade</button>
+    </div>
+<!--    <button mat-raised-button color="primary"-->
+<!--            (click)="startUpgrade()">Start Upgrade</button>-->
+  </mat-card>
+</div>
+
+<div class="container" *ngIf="validUrl !== null">
+  <mat-card>
+    <mat-card-title>Exec details</mat-card-title>
+    <br>
+    <table class="table table-bordered table-hover">
+      <tbody>
+      <tr>
+        <th scope="row">Log file:</th>
+        <td>{{execdetails.logFile}}</td>
+      </tr>
+      <tr>
+        <th scope="row">Tailstream port:</th>
+        <td><a href="{{tailStream}}"><u>Click Here</u></a></td>
+      </tr>
+      </tbody>
+    </table>
+<!--    <br>-->
+<!--    <br>-->
+<!--    <div id="bottom">-->
+<!--    <button mat-raised-button color="accent"-->
+<!--            (click)="pauseUpgrade()">Pause Upgrade</button>-->
+<!--    <button mat-raised-button color="warn"-->
+<!--            (click)="stopUpgrade()">Stop Upgrade</button>-->
+<!--    </div>-->
+  </mat-card>
+</div>
+
+<br>
+<br>
+<!--<div class="container" *ngIf="errorData">-->
+<!--  <mat-card>-->
+<!--    <mat-card-title>Error happened upgrading all the nodes</mat-card-title>-->
+<!--    <br>-->
+<!--    <br>-->
+<!--    <mat-card-title>{{errorData}}</mat-card-title>-->
+<!--  </mat-card>-->
+<!--</div>-->

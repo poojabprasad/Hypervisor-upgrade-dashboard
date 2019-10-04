@@ -1,0 +1,29 @@
+.container {
+  margin-top: 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+/*.right {*/
+/*  display: flex;*/
+/*  flex-direction: column;*/
+/*  justify-content: space-between;*/
+/*}*/
+.running {
+  color: gold;
+}
+
+.failed {
+  color: red;
+}
+
+.completed {
+  color: green;
+}
